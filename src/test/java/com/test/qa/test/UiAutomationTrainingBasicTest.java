@@ -155,6 +155,20 @@ public class UiAutomationTrainingBasicTest extends TestBase {
         //Todo - Verify Login Page Displayed
         //Todo - Verify Logout Alert Displayed
         //Todo - Verify Logout  Alert Message Content
+		softAssert = new SoftAssert();
+		softAssert.assertTrue(HomePage.isHomePageDisplayed(), "Home Page is not Displayed");
+		HomePage.clickLink(Constants.LOGIN_LINK);
+		LoginPage.setUserName(Constants.LOGIN_USER_NAME);
+		LoginPage.setPassword(Constants.LOGIN_PASSWORD);
+		LoginPage.clickLogIn();
+		softAssert.assertTrue(LoginSecurePage.isLoginSecurePageDisplayed(), "Login Secure Page is not display");
+		softAssert.assertTrue(LoginSecurePage.isLoginAlterDisplayed(),"Login alter is not display");
+		softAssert.assertTrue(LoginSecurePage.getAlterMessage().contains(Constants.LOGIN_SUCCESS_MSG) ,"Login alert message is incorrect");
+		LoginSecurePage.clickLogOut();
+		softAssert.assertTrue(LoginPage.isLoginPageDisplayed(),"Login page is not display");
+		softAssert.assertTrue(LoginPage.isAlterDisplayed(),"Logout alter is not display");
+		softAssert.assertTrue(LoginPage.getAlterMessage().contains(Constants.LOGOUT_SUCCESS_MSG),"Logout alter message is incorrect");
+		softAssert.assertAll();
 	}
 
 	/**
@@ -168,5 +182,14 @@ public class UiAutomationTrainingBasicTest extends TestBase {
         //Todo - Click Submit
         //Todo - Verify Invalid Login Alert Displayed
         //Todo - Verify Invalid Login  Alert Message Content
+		softAssert = new SoftAssert();
+		softAssert.assertTrue(HomePage.isHomePageDisplayed(), "Home Page is not Displayed");
+		HomePage.clickLink(Constants.LOGIN_LINK);
+		LoginPage.setUserName(Constants.LOGIN_INVALID_USER_NAME);
+		LoginPage.setPassword(Constants.LOGIN_INVALID_PASSWORD);
+		LoginPage.clickLogIn();
+		softAssert.assertTrue(LoginPage.isAlterDisplayed(),"Login alter is not display");
+		softAssert.assertTrue(LoginPage.getAlterMessage().contains(Constants.LOGIN_INVALID_MSG),"Login invalid message is incorect");
+		softAssert.assertAll();
 	}
 }

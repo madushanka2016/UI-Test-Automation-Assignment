@@ -30,6 +30,9 @@ public class Constants {
 	public static final String SAMPLE_MAIL = "sample_mail@gmail.com";
 	public static final String EMAIL_RESULT = "Your e-mail's been sent!";
 
+	public static final String LOGIN_INVALID_USER_NAME = "invalidusername";
+	public static final String LOGIN_INVALID_PASSWORD = "invalidpassword";
+
 	public static final String LOGIN_USER_NAME = "tomsmith";
 	public static final String LOGIN_PASSWORD = "SuperSecretPassword!";
 	public static final String LOGOUT_SUCCESS_MSG = "You logged out of the secure area!";
